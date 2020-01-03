@@ -13,4 +13,22 @@
 ### 题解
 
 ```
+public static int countDistinctLenth(String str){
+        int resLength = 0;
+        if(str==null || str.length()==0){
+            return resLength;
+        }
+        String[] strList = str.split("");
+        StringBuffer stringBuffer = new StringBuffer();
+        for(String strTemp : strList){
+            if(stringBuffer.indexOf(strTemp)!=-1){
+                stringBuffer = new StringBuffer();
+            }
+            stringBuffer.append(strTemp);
+            if(stringBuffer.length()>resLength){
+                resLength = stringBuffer.length();
+            }
+        }
+        return resLength;
+    }
 ```
