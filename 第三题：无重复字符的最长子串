@@ -14,21 +14,24 @@
 
 ```
 public static int countDistinctLenth(String str){
-        int resLength = 0;
-        if(str==null || str.length()==0){
-            return resLength;
-        }
-        String[] strList = str.split("");
-        StringBuffer stringBuffer = new StringBuffer();
-        for(String strTemp : strList){
-            if(stringBuffer.indexOf(strTemp)!=-1){
-                stringBuffer = new StringBuffer();
-            }
-            stringBuffer.append(strTemp);
-            if(stringBuffer.length()>resLength){
-                resLength = stringBuffer.length();
-            }
-        }
-        return resLength;
+    if(str==null || str.length()==0){
+            return 0;
     }
+    int maxRes = 0;
+    String[] strList = str.split("");
+    StringBuffer stringBuffer = new StringBuffer();
+    for(int i=0;i<strList.length;i++){
+        String temp = strList[i];
+        if(stringBuffer.indexOf(temp)!=-1){
+            int a = stringBuffer.indexOf(temp);
+            //前指针往前
+            stringBuffer = stringBuffer.delete(0,a+1);
+         }
+        stringBuffer.append(temp);
+        if(stringBuffer.length()>maxRes){
+            maxRes = stringBuffer.length();
+        }
+    }
+    return maxRes;      
+}
 ```
